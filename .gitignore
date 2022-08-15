@@ -1,0 +1,5 @@
+.DS_Store
+data/elasticsearch/*
+!data/elasticsearch/.gitkeep
+data/setup/*
+!data/setup/.gitkeep
