@@ -4,6 +4,10 @@
 
  - https://www.docker.com/
 
+## Diagram
+
+![Diagram](docu/elk-diagram.drawio.png)
+
 ## Init
 
 Start
@@ -23,3 +27,6 @@ $ docker compose stop
 ```
 $ docker compose up -d elk-fleet
 ```
+
+### URLs
+* [Kibana](http://localhost:5601)
