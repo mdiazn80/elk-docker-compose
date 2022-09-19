@@ -35,3 +35,6 @@ $ docker compose up -d elk-fleet
 
 ### URLs
 * [Kibana](http://localhost:5601)
+
+## Documentation
+ * https://www.elastic.co/es/
