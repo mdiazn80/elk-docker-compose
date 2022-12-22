@@ -18,7 +18,7 @@ elasticsearch.password: ${KIBANA_SYSTEM_PASSWORD}
 xpack.fleet.agents.fleet_server.hosts: [ 'http://elk-fleet:8220' ]
 xpack.fleet.agents.elasticsearch.hosts: [ 'http://elk-elasticsearch:9200' ]
 
-xpack.encryptedSavedObjects.encryptionKey: 'soyelreydelmundodetitanicyelmasguapo'
+xpack.encryptedSavedObjects.encryptionKey: 'UUFKMUhZUUJIUVdabHM3NDRvNWU6MmlxM29sLTJSemVvZTRaTF93ZzVhZw'
 
 xpack.fleet.packages:
   - name: fleet_server
