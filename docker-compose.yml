@@ -53,32 +53,32 @@ services:
     networks:
       - elk-network
 
-  elk-logstash:
-    build:
-      context: logstash/
-      args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
-    hostname: elk-logstash
-    container_name: elk-logstash
-    volumes:
-      - type: bind
-        source: ./logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
-      - type: bind
-        source: ./logstash/pipeline
-        target: /usr/share/logstash/pipeline
-    ports:
-      - "5044:5044"
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
-      - "9600:9600"
-    environment:
-      LS_JAVA_OPTS: -Xms256m -Xmx256m
-      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
-    networks:
-      - elk-network
-    depends_on:
-      - elk-elasticsearch
+#  elk-logstash:
+#    build:
+#      context: logstash/
+#      args:
+#        ELASTIC_VERSION: ${ELASTIC_VERSION}
+#    hostname: elk-logstash
+#    container_name: elk-logstash
+#    volumes:
+#      - type: bind
+#        source: ./logstash/config/logstash.yml
+#        target: /usr/share/logstash/config/logstash.yml
+#      - type: bind
+#        source: ./logstash/pipeline
+#        target: /usr/share/logstash/pipeline
+#    ports:
+#      - "5044:5044"
+#      - "5000:5000/tcp"
+#      - "5000:5000/udp"
+#      - "9600:9600"
+#    environment:
+#      LS_JAVA_OPTS: -Xms256m -Xmx256m
+#      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+#    networks:
+#      - elk-network
+#    depends_on:
+#      - elk-elasticsearch
 
   elk-kibana:
     build:
@@ -114,11 +114,13 @@ services:
       FLEET_SERVER_ELASTICSEARCH_HOST: http://elk-elasticsearch:9200
       FLEET_SERVER_POLICY_ID: fleet-server-policy
       FLEET_SERVER_INSECURE_HTTP: 'true'
+      #FLEET_SERVER_SERVICE_TOKEN: 'UUFKMUhZUUJIUVdabHM3NDRvNWU6MmlxM29sLTJSemVvZTRaTF93ZzVhZw=='
+      FLEET_ENROLLMENT_TOKEN: 'TjN3TU9ZVUIzWlQtMUYyTnJGODc6c0pCOVlMNVFSbWF4Y1Z1X1hndWdwUQ=='
       # Enrollment.
       # (a) Auto-enroll using basic authentication
       KIBANA_HOST: http://elk-kibana:5601
-      KIBANA_FLEET_USERNAME: elastic
-      KIBANA_FLEET_PASSWORD: ${ELASTIC_PASSWORD:-}
+      #KIBANA_FLEET_USERNAME: elastic
+      #KIBANA_FLEET_PASSWORD: ${ELASTIC_PASSWORD:-}
     networks:
       - elk-network
     depends_on:
